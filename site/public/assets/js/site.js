@@ -72,6 +72,7 @@
   if (float && "IntersectionObserver" in window) {
     var concorrentes = [
       document.querySelector(".hero__acoes"),
+      document.querySelector("#form-contato"),
       document.querySelector(".site-footer")
     ].filter(Boolean);
 

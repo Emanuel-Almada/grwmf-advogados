@@ -1,0 +1,469 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>GR &amp; WMF Advogados — Proposta de novo site</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Lato:wght@400;700;900&display=swap">
+<style>
+:root{
+  --cream:#FBF8F3; --cream-2:#F5EDE1; --cream-3:#EFE4D3;
+  --ink:#221B12; --body:#554C40; --muted:#7A7065;
+  --gold:#A87B36; --gold-deep:#8A6227; --gold-soft:#C9A567; --gold-wash:#F3E9D8;
+  --navy:#1C2537; --line:#E5DAC7;
+  --display:"EB Garamond", Georgia, serif;
+  --sans:"Lato", "Helvetica Neue", Arial, sans-serif;
+}
+@page{ size:A4; margin:0 }
+*{box-sizing:border-box; -webkit-print-color-adjust:exact; print-color-adjust:exact}
+body{margin:0; font-family:var(--sans); color:var(--body); background:var(--cream); font-size:10.5pt; line-height:1.6}
+
+.pg{
+  width:210mm; height:297mm; padding:18mm 16mm 14mm;
+  page-break-after:always; position:relative; overflow:hidden;
+  background:var(--cream); display:flex; flex-direction:column;
+}
+.pg:last-child{page-break-after:auto}
+.pg--capa{background:var(--navy); color:#B3AA9C; justify-content:space-between; padding:22mm 16mm}
+.pg--escura{background:var(--navy); color:#B3AA9C}
+
+h1,h2,h3{font-family:var(--display); color:var(--ink); font-weight:500; margin:0; line-height:1.15; letter-spacing:-.01em}
+h1{font-size:31pt}
+h2{font-size:20pt; margin-bottom:4mm}
+h3{font-size:12.5pt}
+.pg--capa h1,.pg--capa h2,.pg--escura h2,.pg--escura h3{color:#F2EDE4}
+p{margin:0 0 3mm}
+strong{color:var(--ink); font-weight:700}
+.pg--escura strong,.pg--capa strong{color:#F2EDE4}
+
+.eyebrow{
+  font-size:7.5pt; font-weight:900; letter-spacing:.2em; text-transform:uppercase;
+  color:var(--gold-deep); margin-bottom:3mm; display:block;
+}
+.pg--capa .eyebrow,.pg--escura .eyebrow{color:var(--gold-soft)}
+.lead{font-family:var(--display); font-size:13pt; line-height:1.5; color:var(--body); max-width:150mm}
+.pg--escura .lead{color:#B3AA9C}
+
+.rodape{
+  position:absolute; left:16mm; right:16mm; bottom:9mm;
+  display:flex; justify-content:space-between;
+  font-size:7.5pt; letter-spacing:.08em; text-transform:uppercase; color:var(--muted);
+  border-top:.4pt solid var(--line); padding-top:2.5mm;
+}
+.pg--escura .rodape{color:#6E6A62; border-color:#2B3549}
+
+/* ---- capa ---- */
+.marca{display:flex; align-items:center; gap:5mm}
+.marca__selo{
+  width:16mm; height:16mm; border:.6pt solid var(--gold-soft); border-radius:1mm;
+  display:flex; align-items:center; justify-content:center;
+  font-family:var(--display); font-size:13pt; color:var(--gold-soft);
+}
+.marca__nome{display:block; font-family:var(--display); font-size:17pt; color:#F2EDE4; line-height:1.1}
+.marca__sub{display:block; font-size:7pt; letter-spacing:.32em; text-transform:uppercase; color:#8A8272; margin-top:1.5mm}
+.capa__meio{max-width:150mm}
+.capa__meio h1{font-size:36pt; margin-bottom:6mm}
+.capa__meio p{font-family:var(--display); font-size:13.5pt; color:#B3AA9C; line-height:1.5}
+.capa__pe{display:flex; justify-content:space-between; align-items:flex-end; font-size:9pt; color:#8A8272}
+.capa__pe b{display:block; color:#F2EDE4; font-size:10.5pt; margin-bottom:1mm}
+
+/* ---- números ---- */
+.numeros{display:grid; grid-template-columns:repeat(3,1fr); gap:.4mm; background:var(--line); border:.4pt solid var(--line); margin:6mm 0}
+.num{background:var(--cream); padding:6mm 5mm; text-align:center}
+.num__v{font-family:var(--display); font-size:24pt; color:var(--gold-deep); line-height:1; display:block; margin-bottom:2mm}
+.num__l{font-size:8.5pt; color:var(--body); line-height:1.35}
+
+/* ---- listas ---- */
+.itens{display:grid; gap:4mm; margin-top:5mm}
+.item{display:grid; grid-template-columns:7mm 1fr; gap:4mm; align-items:start}
+.item__m{
+  width:7mm; height:7mm; border-radius:50%; background:var(--gold-wash);
+  color:var(--gold-deep); font-size:8pt; font-weight:900;
+  display:flex; align-items:center; justify-content:center;
+}
+.item h3{margin-bottom:1mm; font-family:var(--sans); font-size:10.5pt; font-weight:700; color:var(--ink)}
+.item p{font-size:9.5pt; margin:0; color:var(--body)}
+
+/* ---- tabela ---- */
+table{width:100%; border-collapse:collapse; font-size:9pt; margin-top:4mm}
+th{
+  text-align:left; font-size:7.5pt; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--muted); font-weight:900; padding:0 3mm 2.5mm 0; border-bottom:.6pt solid var(--line);
+}
+td{padding:2.8mm 3mm 2.8mm 0; border-bottom:.4pt solid var(--line); vertical-align:top}
+td:first-child{color:var(--ink); font-weight:700; width:38%}
+.antes{color:#9B4A4A}
+.depois{color:#3E6B4F; font-weight:700}
+
+/* ---- telas ---- */
+.tela{border:.5pt solid var(--line); box-shadow:0 2mm 6mm rgba(34,27,18,.10); display:block; width:100%}
+.tela--m{width:62mm; margin:0 auto}
+.pg--duas .tela{max-height:92mm; object-fit:cover; object-position:top center}
+.legenda{font-size:8pt; color:var(--muted); margin-top:2.5mm; line-height:1.4}
+.duplo{display:grid; grid-template-columns:1fr 1fr; gap:6mm; align-items:start}
+.trio{display:grid; grid-template-columns:66mm 1fr; gap:8mm; align-items:start}
+
+/* ---- destaque ---- */
+.caixa{
+  background:var(--gold-wash); border-left:1.2pt solid var(--gold);
+  padding:5mm 6mm; margin-top:6mm; font-size:9.5pt;
+}
+.caixa h3{font-family:var(--sans); font-size:10pt; font-weight:900; margin-bottom:2mm}
+.pg--escura .caixa{background:#232D42; border-color:var(--gold-soft); color:#B3AA9C}
+
+.cols{display:grid; grid-template-columns:1fr 1fr; gap:7mm; margin-top:5mm}
+.bloco h3{font-family:var(--sans); font-size:10pt; font-weight:900; color:var(--ink); margin-bottom:2mm; padding-bottom:2mm; border-bottom:.5pt solid var(--line)}
+.pg--escura .bloco h3{color:#F2EDE4; border-color:#2B3549}
+.bloco ul{margin:0; padding-left:4.5mm; font-size:9pt}
+.bloco li{margin-bottom:1.6mm}
+</style>
+</head>
+<body>
+
+<!-- 1 · CAPA -->
+<section class="pg pg--capa">
+  <div class="marca">
+    <span class="marca__selo">GW</span>
+    <span>
+      <span class="marca__nome">GR &amp; WMF</span>
+      <span class="marca__sub">Advogados</span>
+    </span>
+  </div>
+
+  <div class="capa__meio">
+    <span class="eyebrow">Proposta de novo site institucional</span>
+    <h1>O site que o escritório merece depois da união</h1>
+    <p>
+      Um diagnóstico do site atual, e o novo site já construído — pronto para
+      vocês verem funcionando antes de decidir qualquer coisa.
+    </p>
+  </div>
+
+  <div class="capa__pe">
+    <div>
+      <b>Emanuel Almada</b>
+      Desenvolvimento web<br>
+      emanuelalmadarad@gmail.com
+    </div>
+    <div style="text-align:right">Setembro de 2026</div>
+  </div>
+</section>
+
+<!-- 2 · DIAGNÓSTICO -->
+<section class="pg">
+  <span class="eyebrow">Ponto de partida</span>
+  <h2>O que encontrei no site atual</h2>
+  <p class="lead">
+    Antes de propor qualquer coisa, medi o site de vocês — página por página,
+    direto no código e nos tempos de resposta. Estes números não são estimativa.
+  </p>
+
+  <div class="numeros">
+    <div class="num"><span class="num__v">0</span><span class="num__l">páginas com descrição para o Google</span></div>
+    <div class="num"><span class="num__v">0</span><span class="num__l">títulos principais preenchidos</span></div>
+    <div class="num"><span class="num__v">6,0s</span><span class="num__l">para a página inicial carregar</span></div>
+    <div class="num"><span class="num__v">404</span><span class="num__l">no mapa do site (não existe)</span></div>
+    <div class="num"><span class="num__v">0</span><span class="num__l">conteúdos próprios publicados</span></div>
+    <div class="num"><span class="num__v">1</span><span class="num__l">página para as seis áreas</span></div>
+  </div>
+
+  <div class="itens">
+    <div class="item">
+      <span class="item__m">1</span>
+      <div>
+        <h3>O link do WhatsApp está com o número fora do padrão</h3>
+        <p>O botão de contato aponta para um número com parênteses, formato que o
+        WhatsApp não aceita. É o único canal imediato do site.</p>
+      </div>
+    </div>
+    <div class="item">
+      <span class="item__m">2</span>
+      <div>
+        <h3>A primeira tela não diz o que o escritório faz</h3>
+        <p>Só o logotipo sobre uma foto — e, no celular, dois logotipos sobrepostos
+        cobrindo o menu. Quem chega precisa rolar a página inteira para descobrir
+        as áreas de atuação.</p>
+      </div>
+    </div>
+    <div class="item">
+      <span class="item__m">3</span>
+      <div>
+        <h3>Quando alguém compartilha o link, ele chega sem nada</h3>
+        <p>O site não tem as informações que o WhatsApp usa para montar o cartão de
+        prévia. Numa profissão que vive de indicação, cada link enviado por um
+        cliente chega sem imagem, sem título e sem descrição.</p>
+      </div>
+    </div>
+    <div class="item">
+      <span class="item__m">4</span>
+      <div>
+        <h3>As notícias levam o visitante para fora</h3>
+        <p>O bloco mais atualizado da página inicial é um feed automático de outro
+        portal jurídico. Todos os links saem do site de vocês.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="rodape"><span>GR &amp; WMF Advogados</span><span>02</span></div>
+</section>
+
+<!-- 3 · O QUE ISSO CUSTA -->
+<section class="pg pg--escura">
+  <span class="eyebrow">Consequência</span>
+  <h2>O que isso custa, na prática</h2>
+  <p class="lead">
+    Nada disso aparece como “erro”. O site abre, tem as informações, funciona.
+    O custo é invisível — e é justamente por isso que ele continua.
+  </p>
+
+  <div class="cols" style="margin-top:8mm">
+    <div class="bloco">
+      <h3>Quem procura, não acha</h3>
+      <ul>
+        <li>Sem título e sem descrição, o Google precisa adivinhar do que trata cada página</li>
+        <li>Sem mapa do site, páginas ficam de fora do rastreamento</li>
+        <li>“Advogado de inventário em Belo Horizonte” não encontra o escritório</li>
+        <li>Sem dados estruturados, ChatGPT, Gemini e Perplexity não têm o que citar</li>
+      </ul>
+    </div>
+    <div class="bloco">
+      <h3>Quem acha, não age</h3>
+      <ul>
+        <li>A primeira tela não apresenta nenhuma proposta nem pedido de contato</li>
+        <li>As seis áreas empilhadas numa página só obrigam o visitante a garimpar</li>
+        <li>Não há foto, formação em destaque nem qualquer sinal de confiança</li>
+        <li>O único canal imediato depende de um link com formato inválido</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="caixa">
+    <h3>Levantamento completo</h3>
+    <p style="margin:0">A auditoria identificou <strong>37 pontos de melhoria</strong>, organizados
+    por severidade em seis frentes: conversão, conteúdo, design, busca, técnica e
+    conformidade com a LGPD e o Provimento 205/2021 da OAB. O relatório detalhado
+    acompanha esta proposta, se houver interesse.</p>
+  </div>
+
+  <div class="rodape"><span>GR &amp; WMF Advogados</span><span>03</span></div>
+</section>
+
+<!-- 4 · A PROPOSTA -->
+<section class="pg">
+  <span class="eyebrow">A proposta</span>
+  <h2>Não é um projeto. É o site pronto.</h2>
+  <p class="lead">
+    Construí o site inteiro antes de procurar vocês. São 20 páginas funcionando,
+    que dá para abrir, navegar e testar no celular — em vez de imaginar a partir
+    de um desenho.
+  </p>
+
+  <div class="cols" style="margin-top:7mm">
+    <div class="bloco">
+      <h3>Estrutura</h3>
+      <ul>
+        <li>Página inicial com proposta clara e caminho de leitura</li>
+        <li><strong>Uma página para cada área</strong> — seis portas de entrada em vez de uma</li>
+        <li>Perfil individual de cada sócio, com OAB e formação</li>
+        <li>Seção de artigos, pronta para crescer</li>
+        <li>Perguntas frequentes: 6 gerais e 4 por área</li>
+        <li>Contato com formulário, mapa e canais diretos</li>
+        <li>Política de privacidade e página de erro próprias</li>
+      </ul>
+    </div>
+    <div class="bloco">
+      <h3>Como as pessoas chegam</h3>
+      <ul>
+        <li>Cada área começa pelo problema do cliente, não pelo nome da disciplina</li>
+        <li>Atalhos na primeira tela: divórcio, inventário, imóveis, condomínio…</li>
+        <li>O formulário monta a mensagem e abre o WhatsApp <strong>do sócio da área</strong></li>
+        <li>Quem prefere discrição encontra e-mail e telefone ao lado</li>
+        <li>Botão de WhatsApp acompanha a rolagem, sem atrapalhar</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="caixa">
+    <h3>Escrito dentro do Provimento 205/2021</h3>
+    <p style="margin:0">Todo o site respeita os limites da publicidade na advocacia:
+    sem divulgação de honorários, sem promessa de resultado, sem caso de êxito e sem
+    depoimento de cliente. A captação vem de clareza, conteúdo útil e qualificação
+    demonstrada — que é o que a norma permite e o que de fato funciona.</p>
+  </div>
+
+  <div class="rodape"><span>GR &amp; WMF Advogados</span><span>04</span></div>
+</section>
+
+<!-- 5 · TELA HOME -->
+<section class="pg">
+  <span class="eyebrow">Página inicial</span>
+  <h2>A primeira tela responde três perguntas</h2>
+  <p style="font-size:9.5pt; max-width:150mm">
+    O que o escritório faz, onde atende e como falar com ele — sem precisar rolar.
+    Os atalhos levam direto à área do problema de quem chegou.
+  </p>
+  <img class="tela" src="telas/01-home-hero.png" alt="Primeira tela do novo site" style="margin-top:5mm">
+  <p class="legenda">
+    O espaço à esquerda recebe a foto dos sócios. Está com marcador provisório
+    porque a sessão de fotos ainda não existe — assim que houver, é só substituir.
+  </p>
+
+  <div class="cols" style="margin-top:auto; padding-bottom:6mm">
+    <div class="bloco">
+      <h3>O que mudou aqui</h3>
+      <ul>
+        <li>Título diz a área e a cidade, em vez de só mostrar o logotipo</li>
+        <li>Dois caminhos de contato imediatos, lado a lado</li>
+        <li>OAB dos dois sócios visível na primeira tela</li>
+      </ul>
+    </div>
+    <div class="bloco">
+      <h3>Os atalhos</h3>
+      <ul>
+        <li>Levam à página da área em um toque</li>
+        <li>Usam a palavra do cliente: “divórcio”, “inventário”, “imóveis”</li>
+        <li>No celular, viram uma régua que desliza</li>
+      </ul>
+    </div>
+  </div>
+  <div class="rodape"><span>GR &amp; WMF Advogados</span><span>05</span></div>
+</section>
+
+<!-- 6 · ÁREAS -->
+<section class="pg">
+  <span class="eyebrow">Áreas de atuação</span>
+  <h2>Seis páginas, seis portas de entrada</h2>
+  <p style="font-size:9.5pt; max-width:150mm">
+    Cada área ganha página própria, com os serviços, o passo a passo do atendimento
+    e as perguntas frequentes daquele tema. É o que permite ser encontrado por
+    assunto — e falar com quem procura por aquele assunto específico.
+  </p>
+  <img class="tela" src="telas/02-areas.png" alt="Página de áreas de atuação" style="margin-top:5mm">
+  <p class="legenda">
+    Cada card abre pela situação real do cliente, em itálico, antes de descrever
+    a atuação jurídica.
+  </p>
+  <div class="rodape"><span>GR &amp; WMF Advogados</span><span>06</span></div>
+</section>
+
+<!-- 7 · DETALHE DE ÁREA -->
+<section class="pg pg--duas">
+  <span class="eyebrow">Dentro de uma área</span>
+  <h2>Linguagem de quem precisa decidir</h2>
+  <img class="tela" src="telas/03-area-detalhe.png" alt="Página de Direito de Família e Sucessões" style="margin-top:5mm">
+  <p class="legenda">
+    Direito de Família e Sucessões. O botão de WhatsApp já sai com a mensagem
+    escrita e endereçada à sócia responsável pela área.
+  </p>
+  <img class="tela" src="telas/07-artigo.png" alt="Página de artigo" style="margin-top:7mm">
+  <p class="legenda">
+    Estrutura de artigo pronta, com autor, data e área relacionada. Os textos que
+    aparecem são exemplos de formato — o conteúdo real fica a cargo dos sócios.
+  </p>
+  <div class="rodape"><span>GR &amp; WMF Advogados</span><span>07</span></div>
+</section>
+
+<!-- 8 · MOBILE E CONTATO -->
+<section class="pg">
+  <span class="eyebrow">Celular e contato</span>
+  <h2>Sete em cada dez visitas vêm do celular</h2>
+  <div class="trio" style="margin-top:5mm">
+    <div>
+      <img class="tela tela--m" src="telas/06-home-mobile.png" alt="Site no celular">
+      <p class="legenda" style="text-align:center">
+        A tela inicial cabe sem rolar: mensagem, atalhos, contato e credenciais.
+      </p>
+    </div>
+    <div>
+      <img class="tela" src="telas/05-contato.png" alt="Página de contato">
+      <p class="legenda">
+        O formulário monta a mensagem e abre o WhatsApp do sócio certo conforme o
+        assunto escolhido. Nada é gravado no site — o que simplifica a LGPD.
+      </p>
+    </div>
+  </div>
+  <div class="rodape"><span>GR &amp; WMF Advogados</span><span>08</span></div>
+</section>
+
+<!-- 9 · ANTES E DEPOIS -->
+<section class="pg">
+  <span class="eyebrow">Comparativo</span>
+  <h2>O que muda, item a item</h2>
+  <table>
+    <thead>
+      <tr><th>&nbsp;</th><th>Site atual</th><th>Site novo</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Carregamento da página inicial</td><td class="antes">6,0 segundos</td><td class="depois">Abaixo de 0,5 s</td></tr>
+      <tr><td>Bibliotecas carregadas</td><td class="antes">jQuery, Bootstrap, Font Awesome</td><td class="depois">Nenhuma</td></tr>
+      <tr><td>Páginas para as áreas</td><td class="antes">1 para as seis</td><td class="depois">6, com FAQ própria</td></tr>
+      <tr><td>Títulos e descrições para busca</td><td class="antes">Ausentes</td><td class="depois">Em todas as páginas</td></tr>
+      <tr><td>Prévia ao compartilhar no WhatsApp</td><td class="antes">Sem imagem e sem texto</td><td class="depois">Cartão completo</td></tr>
+      <tr><td>Dados para buscadores e IAs</td><td class="antes">Nenhum</td><td class="depois">7 tipos de marcação</td></tr>
+      <tr><td>Mapa do site</td><td class="antes">Não existe</td><td class="depois">Gerado a cada publicação</td></tr>
+      <tr><td>Conteúdo próprio</td><td class="antes">Feed de outro portal</td><td class="depois">Estrutura de artigos própria</td></tr>
+      <tr><td>Perguntas respondidas</td><td class="antes">Nenhuma</td><td class="depois">30, marcadas para o Google</td></tr>
+      <tr><td>Zoom no celular</td><td class="antes">Bloqueado</td><td class="depois">Liberado</td></tr>
+      <tr><td>Cookies e LGPD</td><td class="antes">Só “Ok, entendi”</td><td class="depois">Aceitar ou recusar, com registro</td></tr>
+      <tr><td>Propriedade do site</td><td class="antes">Plataforma de terceiros</td><td class="depois">Do escritório, publicável em qualquer lugar</td></tr>
+    </tbody>
+  </table>
+  <div class="rodape"><span>GR &amp; WMF Advogados</span><span>09</span></div>
+</section>
+
+<!-- 10 · PRÓXIMOS PASSOS -->
+<section class="pg pg--escura">
+  <span class="eyebrow">Próximo passo</span>
+  <h2>O que falta, com transparência</h2>
+  <p class="lead">
+    O site está construído e funcionando. Três coisas dependem de vocês — e
+    prefiro dizer isso agora do que depois.
+  </p>
+
+  <div class="itens" style="margin-top:7mm">
+    <div class="item">
+      <span class="item__m">1</span>
+      <div>
+        <h3 style="color:#F2EDE4">Fotos</h3>
+        <p style="color:#B3AA9C">Uma foto dos dois sócios e um retrato de cada um.
+        Enquanto não existirem, o site mostra marcadores tipográficos.</p>
+      </div>
+    </div>
+    <div class="item">
+      <span class="item__m">2</span>
+      <div>
+        <h3 style="color:#F2EDE4">Aprovação dos textos</h3>
+        <p style="color:#B3AA9C">Escrevi toda a copy para mostrar o formato e o tom.
+        Nada disso vai ao ar sem a leitura e a correção de vocês — inclusive os
+        artigos, os prazos de atendimento e as afirmações jurídicas.</p>
+      </div>
+    </div>
+    <div class="item">
+      <span class="item__m">3</span>
+      <div>
+        <h3 style="color:#F2EDE4">Logotipo em vetor e e-mail no domínio</h3>
+        <p style="color:#B3AA9C">O arquivo original do logo e uma caixa
+        <strong>contato@grewmfadvogados.com</strong>, que passa mais estrutura do
+        que endereços pessoais do Gmail.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="caixa">
+    <h3>Como seguir</h3>
+    <p style="margin:0">Uma conversa de 20 minutos, presencial ou por vídeo, para eu
+    mostrar o site funcionando e ouvir o que vocês querem manter, tirar ou mudar.
+    Sem compromisso — se não fizer sentido, o material fica com vocês do mesmo jeito.</p>
+  </div>
+
+  <div style="margin-top:auto; padding-top:10mm; border-top:.4pt solid #2B3549">
+    <div style="font-family:var(--display); font-size:14pt; color:#F2EDE4">Emanuel Almada</div>
+    <div style="font-size:9pt; color:#8A8272; margin-top:1.5mm">
+      Desenvolvimento web · emanuelalmadarad@gmail.com
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

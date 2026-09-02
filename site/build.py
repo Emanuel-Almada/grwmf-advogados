@@ -277,7 +277,7 @@ def pagina(path, title, description, corpo, schema=None, atual=None,
   <title>{e(title)}</title>
   <meta name="description" content="{e(description)}">
   <link rel="canonical" href="{canonical}">{robots}
-  <meta name="theme-color" content="#FBF8F3">
+  <meta name="theme-color" content="#141B29">
 
   <meta property="og:type" content="{og_type}">
   <meta property="og:site_name" content="{e(SITE['nome'])}">
