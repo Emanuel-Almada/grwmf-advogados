@@ -204,7 +204,12 @@ hr{border:0; border-top:1px solid var(--line); margin:0}
   letter-spacing:.06em; text-transform:uppercase; text-align:center;
   color:var(--parchment); opacity:.055;
   pointer-events:none; user-select:none; white-space:nowrap;
-  margin-bottom:clamp(10px, 1.8vw, 26px);
+  /* A caixa da linha reserva 0.151em acima das maiúsculas nesta fonte —
+     espaço invisível que somava 28px ao respiro em 1440px. Anulando aqui, a
+     distância que se vê passa a ser exatamente --ghost-pad, em qualquer
+     corpo: a margem é em em, então escala junto com o texto. */
+  margin-top:-.151em;
+  margin-bottom:clamp(6px, 1.1vw, 16px);
 }
 /* a faixa da marca substitui parte do respiro do topo, em vez de somar */
 .section:has(> .ghost),
