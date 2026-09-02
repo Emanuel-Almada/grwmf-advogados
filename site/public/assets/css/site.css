@@ -162,7 +162,7 @@ hr{border:0; border-top:1px solid var(--line); margin:0}
 }
 .wrap--narrow{max-width:var(--wrap-narrow)}
 
-.section{padding-block:clamp(56px, 8vw, 104px); position:relative}
+.section{padding-block:clamp(56px, 8vw, 104px); position:relative; overflow:clip}
 .section--tight{padding-block:clamp(40px, 5vw, 64px)}
 /* faixas alternadas: no escuro, a variação é de luz, não de cor */
 .section--cream2{
@@ -189,16 +189,21 @@ hr{border:0; border-top:1px solid var(--line); margin:0}
 
 .lead{font-size:var(--fs-lg); line-height:1.65; color:var(--muted); max-width:62ch}
 
+/* Marca d'água tipográfica. Fica ACIMA do texto e é cortada pela borda da
+   seção — antes ela dividia a faixa com a sobrancelha e o título, e no fundo
+   escuro texto claro a 3,8% lê bem mais forte do que lia no fundo creme. */
 .ghost{
-  position:absolute; inset-inline-start:50%; top:clamp(8px,3vw,32px);
+  position:absolute; inset-inline-start:50%; top:-.34em;
   transform:translateX(-50%);
   font-family:var(--display); font-weight:500;
   font-size:clamp(46px, 15vw, 190px); line-height:.8;
   letter-spacing:.06em; text-transform:uppercase;
-  color:var(--parchment); opacity:.038;
+  color:var(--parchment); opacity:.03;
   pointer-events:none; user-select:none; white-space:nowrap;
   z-index:0;
 }
+/* no celular não sobra faixa para ela ocupar sem disputar com o texto */
+@media (max-width:899px){ .ghost{display:none} }
 .section > .wrap, .hero > .wrap, .cta-band > .wrap, .page-hero > .wrap{position:relative; z-index:1}
 
 /* ------------------------------------------------------------ 4. botões */
