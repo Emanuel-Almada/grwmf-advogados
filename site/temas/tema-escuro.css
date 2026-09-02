@@ -76,6 +76,9 @@
   --glow:  0 0 0 1px var(--glass-line-hi), 0 18px 44px -26px rgba(201,165,103,.5);
 
   --header-h: 81px;   /* nav 80px + a linha de 1px */
+  /* respiro acima da marca d'água — vale para hero, seções, hero interno e
+     faixa de CTA. Um valor só: assim não há como divergirem. */
+  --ghost-pad: clamp(14px, 1.55vw, 26px);
 
   --t: 220ms cubic-bezier(.4,0,.2,1);
   --t-slow: 620ms cubic-bezier(.22,.68,.3,1);
@@ -207,7 +210,7 @@ hr{border:0; border-top:1px solid var(--line); margin:0}
 .section:has(> .ghost),
 .hero:has(> .ghost),
 .page-hero:has(> .ghost),
-.cta-band:has(> .ghost){padding-block-start:clamp(24px, 2.6vw, 44px)}
+.cta-band:has(> .ghost){padding-block-start:var(--ghost-pad)}
 .section > .wrap, .hero > .wrap, .cta-band > .wrap, .page-hero > .wrap{position:relative; z-index:1}
 
 /* ------------------------------------------------------------ 4. botões */
@@ -916,10 +919,8 @@ hr{border:0; border-top:1px solid var(--line); margin:0}
   html{scroll-padding-top:16px}
   .nav{min-height:60px}
 
-  .hero:has(> .ghost){padding-block:14px 20px}
-  .section:has(> .ghost),
-  .page-hero:has(> .ghost),
-  .cta-band:has(> .ghost){padding-block-start:18px}
+  :root{--ghost-pad:14px}
+  .hero:has(> .ghost){padding-block-end:20px}
   .ghost{font-size:clamp(26px, 7.5vh, 64px); margin-bottom:6px}
 
   .hero h1{font-size:clamp(1.5rem, 3.2vw, 2rem); margin-bottom:8px}
@@ -954,7 +955,8 @@ hr{border:0; border-top:1px solid var(--line); margin:0}
 /* paisagem ainda mais baixa (390px de altura útil): cada pixel conta, mas a
    marca continua inteira — só menor */
 @media (orientation: landscape) and (max-height: 430px){
-  .hero:has(> .ghost){padding-block:10px 14px}
+  :root{--ghost-pad:11px}
+  .hero:has(> .ghost){padding-block-end:14px}
   .ghost{font-size:clamp(22px, 6vh, 46px); margin-bottom:4px}
   .hero h1{margin-bottom:6px}
   .hero .eyebrow{margin-bottom:6px}
