@@ -162,7 +162,7 @@ hr{border:0; border-top:1px solid var(--line); margin:0}
 }
 .wrap--narrow{max-width:var(--wrap-narrow)}
 
-.section{padding-block:clamp(56px, 8vw, 104px); position:relative; overflow:clip}
+.section{padding-block:clamp(56px, 8vw, 104px); position:relative}
 .section--tight{padding-block:clamp(40px, 5vw, 64px)}
 /* faixas alternadas: no escuro, a variação é de luz, não de cor */
 .section--cream2{
@@ -189,21 +189,25 @@ hr{border:0; border-top:1px solid var(--line); margin:0}
 
 .lead{font-size:var(--fs-lg); line-height:1.65; color:var(--muted); max-width:62ch}
 
-/* Marca d'água tipográfica. Fica ACIMA do texto e é cortada pela borda da
-   seção — antes ela dividia a faixa com a sobrancelha e o título, e no fundo
-   escuro texto claro a 3,8% lê bem mais forte do que lia no fundo creme. */
+/* Marca d'água tipográfica — o nome do assunto em corpo grande, abrindo a
+   seção. Fica NO FLUXO, com faixa própria: assim aparece inteira, não é
+   recortada por borda nenhuma e nunca divide espaço com o texto. O corpo é
+   dado em vw, calibrado pela palavra mais longa ("Advocacia"), o que a faz
+   caber em qualquer largura sem estourar a página. */
 .ghost{
-  position:absolute; inset-inline-start:50%; top:-.34em;
-  transform:translateX(-50%);
+  display:block; position:relative; z-index:0;
   font-family:var(--display); font-weight:500;
-  font-size:clamp(46px, 15vw, 190px); line-height:.8;
-  letter-spacing:.06em; text-transform:uppercase;
-  color:var(--parchment); opacity:.03;
+  font-size:clamp(30px, 14.5vw, 186px); line-height:.9;
+  letter-spacing:.06em; text-transform:uppercase; text-align:center;
+  color:var(--parchment); opacity:.055;
   pointer-events:none; user-select:none; white-space:nowrap;
-  z-index:0;
+  margin-bottom:clamp(10px, 1.8vw, 26px);
 }
-/* no celular não sobra faixa para ela ocupar sem disputar com o texto */
-@media (max-width:899px){ .ghost{display:none} }
+/* a faixa da marca substitui parte do respiro do topo, em vez de somar */
+.section:has(> .ghost),
+.hero:has(> .ghost),
+.page-hero:has(> .ghost),
+.cta-band:has(> .ghost){padding-block-start:clamp(24px, 2.6vw, 44px)}
 .section > .wrap, .hero > .wrap, .cta-band > .wrap, .page-hero > .wrap{position:relative; z-index:1}
 
 /* ------------------------------------------------------------ 4. botões */
@@ -904,42 +908,32 @@ hr{border:0; border-top:1px solid var(--line); margin:0}
 
 /* --- celular deitado: tela larga e MUITO baixa ---
    Sem isto o site cai nas regras de tablet: título de 49px e uma primeira
-   dobra de 1182px numa altura útil de 390px. Em paisagem, a saída é usar
-   a largura que sobra em vez de empilhar. */
+   dobra de 1182px numa altura útil de 390px. Em paisagem a altura é o
+   recurso escasso, então tudo que é decorativo encolhe ou cede lugar. */
 @media (orientation: landscape) and (max-height: 560px){
   :root{--header-h:61px}
   .site-header{position:static}   /* devolve 80px de altura ao conteúdo */
   html{scroll-padding-top:16px}
   .nav{min-height:60px}
 
-  .hero{padding-block:26px}
-  .hero h1{font-size:clamp(1.5rem, 3.2vw, 2rem); margin-bottom:10px}
-  .hero__lead{font-size:var(--fs-base); margin-bottom:18px}
-  .hero__chips{margin-bottom:18px}
-  .hero__trust{margin-top:16px; padding-top:14px; font-size:var(--fs-xs)}
-  .hero__grid{gap:24px; align-items:center}
+  .hero:has(> .ghost){padding-block:14px 20px}
+  .section:has(> .ghost),
+  .page-hero:has(> .ghost),
+  .cta-band:has(> .ghost){padding-block-start:18px}
+  .ghost{font-size:clamp(26px, 7.5vh, 64px); margin-bottom:6px}
 
-  .section{padding-block:44px}
-  .page-hero{padding-block:28px}
-  .cta-band{padding-block:40px}
-  .ghost{font-size:clamp(46px, 9vh, 96px)}
-}
-/* paisagem com largura sobrando: duas colunas em vez de empilhar */
-@media (orientation: landscape) and (max-height: 560px) and (min-width: 680px){
-  .hero__grid{grid-template-columns:0.85fr 1.15fr}
-  .hero__media{aspect-ratio:4/3; order:0}
-}
-/* paisagem muito baixa: a imagem decorativa cede espaço ao que age */
-@media (orientation: landscape) and (max-height: 430px){
-  .hero{padding-block:14px 20px}
-  .hero h1{margin-bottom:8px}
-  .hero__lead{margin-bottom:12px}
+  .hero h1{font-size:clamp(1.5rem, 3.2vw, 2rem); margin-bottom:8px}
   .hero .eyebrow{margin-bottom:8px}
-  .hero__media{display:none}
-  .hero__grid{grid-template-columns:1fr}
+  .hero__lead{font-size:var(--fs-base); margin-bottom:12px}
+  .hero__trust{margin-top:16px; padding-top:14px; font-size:var(--fs-xs)}
+  .hero__trust li.hero__trust-extra{display:none}
+  .hero__grid{gap:24px; grid-template-columns:1fr; align-items:center}
 
-  /* os atalhos viram uma linha deslizável: 123px em duas fileiras viravam
-     o maior gasto de altura, e empurravam os botões para fora da tela */
+  /* a imagem decorativa cede a altura para o que age */
+  .hero__media{display:none}
+
+  /* os atalhos viram uma linha deslizável: em duas fileiras eram o maior
+     gasto de altura, e empurravam os botões para fora da tela */
   .hero__chips{margin:0 calc(var(--gut) * -1) 16px}
   .hero__chips-rotulo{margin:0 var(--gut) 8px}
   .hero__chips ul{
@@ -951,7 +945,22 @@ hr{border:0; border-top:1px solid var(--line); margin:0}
   }
   .hero__chips ul::-webkit-scrollbar{display:none}
   .hero__chips li{scroll-snap-align:start}
-  .hero__trust li.hero__trust-extra{display:none}
+
+  .section{padding-block:44px}
+  .page-hero{padding-block:28px}
+  .cta-band{padding-block:40px}
+}
+
+/* paisagem ainda mais baixa (390px de altura útil): cada pixel conta, mas a
+   marca continua inteira — só menor */
+@media (orientation: landscape) and (max-height: 430px){
+  .hero:has(> .ghost){padding-block:10px 14px}
+  .ghost{font-size:clamp(22px, 6vh, 46px); margin-bottom:4px}
+  .hero h1{margin-bottom:6px}
+  .hero .eyebrow{margin-bottom:6px}
+  .hero__lead{margin-bottom:8px}
+  .hero__chips{margin-bottom:12px}
+  .hero__chips-rotulo{margin-bottom:6px}
 }
 
 /* --- telas muito estreitas (320px) --- */
