@@ -1,0 +1,14 @@
+User-agent: *
+Allow: /
+
+# Rastreadores de IA: conteúdo liberado para citação
+User-agent: GPTBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+Sitemap: https://www.grewmfadvogados.com/sitemap.xml

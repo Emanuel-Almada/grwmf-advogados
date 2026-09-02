@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1200" viewBox="0 0 1200 1200">
+  <rect width="1200" height="1200" fill="#1C2537"/>
+  <g transform="translate(0,285)">
+    <rect x="24" y="24" width="1152" height="582" fill="none" stroke="#A87B36" stroke-width="3"/>
+    <text x="600" y="230" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="100" fill="#F2EDE4">GR &amp; WMF</text>
+    <text x="600" y="298" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="32" fill="#C9A567" letter-spacing="14">ADVOGADOS</text>
+    <line x1="470" y1="345" x2="730" y2="345" stroke="#A87B36" stroke-width="2"/>
+    <text x="600" y="405" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="26" fill="#B3AA9C">Família e Sucessões · Imobiliário · Condominial</text>
+    <text x="600" y="447" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="26" fill="#B3AA9C">Contratual · Empresarial · Trabalhista</text>
+    <text x="600" y="530" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="23" fill="#8A8272" letter-spacing="5">BELO HORIZONTE / MG</text>
+  </g>
+</svg>
