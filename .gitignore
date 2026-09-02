@@ -11,3 +11,5 @@ __pycache__/
 
 # Documento interno de auditoria de conteúdo
 AUDITORIA-CONTEUDO.md
+.vercel
+.env*
