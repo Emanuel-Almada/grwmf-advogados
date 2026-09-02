@@ -75,6 +75,8 @@
   --sh-lg: 0 1px 0 var(--glass-top) inset, 0 24px 60px -28px rgba(0,0,0,1);
   --glow:  0 0 0 1px var(--glass-line-hi), 0 18px 44px -26px rgba(201,165,103,.5);
 
+  --header-h: 81px;   /* nav 80px + a linha de 1px */
+
   --t: 220ms cubic-bezier(.4,0,.2,1);
   --t-slow: 620ms cubic-bezier(.22,.68,.3,1);
 
@@ -250,10 +252,17 @@ hr{border:0; border-top:1px solid var(--line); margin:0}
 .site-header{
   position:sticky; top:0; z-index:20;
   background:rgba(20,27,41,.72);
-  backdrop-filter:blur(18px) saturate(140%);
-  -webkit-backdrop-filter:blur(18px) saturate(140%);
   border-bottom:1px solid var(--line-soft);
   transition:background-color var(--t), border-color var(--t), box-shadow var(--t);
+}
+/* O desfoque fica numa camada própria, e não no cabeçalho.
+   backdrop-filter no elemento o tornaria o bloco de contenção dos filhos
+   position:fixed — e o menu passava a se posicionar dentro do cabeçalho
+   (62px de altura) em vez de cobrir a tela. */
+.site-header::before{
+  content:""; position:absolute; inset:0; z-index:-1; pointer-events:none;
+  backdrop-filter:blur(18px) saturate(140%);
+  -webkit-backdrop-filter:blur(18px) saturate(140%);
 }
 .site-header.is-scrolled{
   background:rgba(20,27,41,.9);
@@ -322,7 +331,7 @@ hr{border:0; border-top:1px solid var(--line); margin:0}
 @media (min-width:920px){ .nav__toggle{display:none} }
 @media (max-width:919px){
   .nav__list{
-    position:fixed; inset:80px 0 0; z-index:30;
+    position:fixed; inset:var(--header-h) 0 0; z-index:30;
     flex-direction:column; align-items:stretch; justify-content:flex-start;
     gap:0; padding:8px var(--gut) 40px;
     background:rgba(20,27,41,.96);
@@ -893,10 +902,10 @@ hr{border:0; border-top:1px solid var(--line); margin:0}
    dobra de 1182px numa altura útil de 390px. Em paisagem, a saída é usar
    a largura que sobra em vez de empilhar. */
 @media (orientation: landscape) and (max-height: 560px){
+  :root{--header-h:61px}
   .site-header{position:static}   /* devolve 80px de altura ao conteúdo */
   html{scroll-padding-top:16px}
   .nav{min-height:60px}
-  .nav__list{inset:0}             /* o menu ocupa a tela toda, e rola */
 
   .hero{padding-block:26px}
   .hero h1{font-size:clamp(1.5rem, 3.2vw, 2rem); margin-bottom:10px}
