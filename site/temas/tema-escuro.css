@@ -569,8 +569,10 @@ hr{border:0; border-top:1px solid var(--line); margin:0}
 @media (prefers-reduced-motion: reduce){ .pillar:hover{transform:none} }
 
 /* faixa de credenciais — fatos neutros, sem métrica de resultado (OAB) */
+/* São 4 itens: 3 colunas deixariam uma célula órfã. O auto-fit passava por
+   3 entre ~500 e 660px, então as colunas são declaradas: 1, 2 e 4. */
 .facts{
-  display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+  display:grid; grid-template-columns:1fr;
   gap:1px; background:var(--line-soft);
   border-block:1px solid var(--line);
   overflow:hidden;
@@ -587,6 +589,8 @@ hr{border:0; border-top:1px solid var(--line); margin:0}
   text-shadow:0 0 30px rgba(201,165,103,.45);
 }
 .fact__l{display:block; font-size:var(--fs-sm); color:var(--muted); line-height:1.4}
+@media (min-width:360px){ .facts{grid-template-columns:repeat(2,1fr)} }
+@media (min-width:760px){ .facts{grid-template-columns:repeat(4,1fr)} }
 
 /* ------------------------------------------------------------ 8. processo */
 .steps{
@@ -987,6 +991,59 @@ hr{border:0; border-top:1px solid var(--line); margin:0}
   .hero__lead{margin-bottom:8px}
   .hero__chips{margin-bottom:12px}
   .hero__chips-rotulo{margin-bottom:6px}
+}
+
+/* --- celular: conteúdo centralizado ---------------------------------------
+
+   No celular a marca d'água já vinha centralizada e todo o resto alinhado à
+   esquerda — duas lógicas na mesma tela. Aqui os blocos de exibição passam a
+   ser centralizados junto com ela.
+
+   O que continua à esquerda, de propósito: texto corrido dos artigos e da
+   política, perguntas e respostas, listas com marcador e o formulário.
+   Centralizar essas partes deixa a borda esquerda irregular e a leitura mais
+   lenta, que é o oposto do objetivo.
+   ------------------------------------------------------------------------- */
+@media (max-width:599px){
+  .hero__texto,
+  .page-hero,
+  .section-head,
+  .cta-band{text-align:center}
+
+  .section-head{margin-inline:auto}
+  .lead, .hero__lead, .cta-band p{margin-inline:auto}
+  .hero__chips-rotulo{text-align:center}
+  .hero__trust{justify-content:center}
+  .crumbs{justify-content:center}
+
+  /* cartões: o ícone também precisa da margem automática para acompanhar */
+  .card__body{align-items:center; text-align:center}
+  .card__icon{margin-inline:auto}
+  .pillar,
+  .step{align-items:center; text-align:center}
+
+  /* perfis dos sócios */
+  .profile{text-align:center; justify-items:center}
+  .profile__photo{max-width:280px; width:100%}
+  .profile .creds{text-align:start}
+
+  /* rodapé empilhado */
+  .site-footer{text-align:center}
+  .footer__brand .brand{justify-content:center}
+  .footer__about{margin-inline:auto}
+  .footer address{margin-inline:auto; max-width:34ch}
+  .footer__bottom{justify-content:center}
+  .footer__legal{margin-inline:auto}
+
+  /* leitura e listas seguem à esquerda */
+  .prose,
+  .faq,
+  .checklist,
+  .services,
+  .form,
+  .callout,
+  .note,
+  .contact-list{text-align:start}
 }
 
 /* --- telas muito estreitas (320px) --- */
