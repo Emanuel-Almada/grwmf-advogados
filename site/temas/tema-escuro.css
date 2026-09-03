@@ -166,7 +166,9 @@ hr{border:0; border-top:1px solid var(--line); margin:0}
 .wrap--narrow{max-width:var(--wrap-narrow)}
 
 .section{padding-block:clamp(56px, 8vw, 104px); position:relative}
-.section--tight{padding-block:clamp(40px, 5vw, 64px)}
+/* faixa de credenciais: o respiro de baixo somava com o da seção seguinte,
+   que já abre com a marca d'água. Metade embaixo, inteiro em cima. */
+.section--tight{padding-block:clamp(40px, 5vw, 64px) clamp(20px, 2.5vw, 32px)}
 /* faixas alternadas: no escuro, a variação é de luz, não de cor */
 .section--cream2{
   background:linear-gradient(180deg, rgba(242,237,228,.035), rgba(242,237,228,.012));
