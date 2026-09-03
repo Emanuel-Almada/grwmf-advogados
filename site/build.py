@@ -92,6 +92,10 @@ ICONS = {
     "seta": _svg('<path d="M4.5 12h15"/><path d="m13 5.5 6.5 6.5-6.5 6.5"/>', 16),
     "menu": _svg('<path d="M3.5 7h17M3.5 12h17M3.5 17h17"/>'),
     "fechar": _svg('<path d="M6 6l12 12M18 6 6 18"/>'),
+    "sol": _svg('<path d="M12 16.4a4.4 4.4 0 1 0 0-8.8 4.4 4.4 0 0 0 0 8.8Z"/>'
+                '<path d="M12 2.6v2.2M12 19.2v2.2M4.9 4.9l1.6 1.6M17.5 17.5l1.6 1.6'
+                'M2.6 12h2.2M19.2 12h2.2M4.9 19.1l1.6-1.6M17.5 6.5l1.6-1.6"/>'),
+    "lua": _svg('<path d="M20.5 14.4A8.6 8.6 0 0 1 9.6 3.5a8.6 8.6 0 1 0 10.9 10.9Z"/>'),
     "escudo": _svg('<path d="M12 21s7.2-3.4 7.2-9V5.9L12 3.2 4.8 5.9V12c0 5.6 7.2 9 7.2 9Z"/>'
                    '<path d="m9.2 11.8 2 2 3.6-3.6"/>'),
     "video": _svg('<path d="M4 6.4h9.6a1.8 1.8 0 0 1 1.8 1.8v7.6a1.8 1.8 0 0 1-1.8 1.8H4a1.8 1.8 0 0 1-1.8-1.8V8.2A1.8 1.8 0 0 1 4 6.4Z"/>'
@@ -160,6 +164,11 @@ def header_html(atual):
       <ul class="nav__list" id="nav-list">
           {lista}
       </ul>
+      <button class="tema" type="button" id="alternar-tema"
+              aria-label="Mudar para o tema claro" aria-pressed="false">
+        <span class="tema__lua">{ICONS["lua"]}</span>
+        <span class="tema__sol">{ICONS["sol"]}</span>
+      </button>
       <a class="btn btn--primary nav__cta" href="/contato/">Agendar consulta</a>
     </nav>
   </div>
@@ -299,7 +308,14 @@ def pagina(path, title, description, corpo, schema=None, atual=None,
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600&family=Lato:wght@400;700&display=swap">
-  <link rel="stylesheet" href="/assets/css/site.css?v={V_CSS}">{schema_tags}
+  <link rel="stylesheet" href="/assets/css/site.css?v={V_CSS}">
+  <script>
+    // roda antes da primeira pintura: sem isto a página pisca no tema errado
+    try {{
+      var t = localStorage.getItem("grwmf.tema");
+      if (t === "light") document.documentElement.setAttribute("data-theme", "light");
+    }} catch (e) {{}}
+  </script>{schema_tags}
 </head>
 <body>
 {header_html(atual)}

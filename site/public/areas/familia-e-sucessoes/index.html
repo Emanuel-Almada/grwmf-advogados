@@ -28,7 +28,14 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600&family=Lato:wght@400;700&display=swap">
-  <link rel="stylesheet" href="/assets/css/site.css?v=06520856">
+  <link rel="stylesheet" href="/assets/css/site.css?v=a4cebb3a">
+  <script>
+    // roda antes da primeira pintura: sem isto a página pisca no tema errado
+    try {
+      var t = localStorage.getItem("grwmf.tema");
+      if (t === "light") document.documentElement.setAttribute("data-theme", "light");
+    } catch (e) {}
+  </script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","name":"Família e Sucessões","serviceType":"Família e Sucessões","url":"https://www.grewmfadvogados.com/areas/familia-e-sucessoes/","description":"Conduzimos separações, inventários e questões de guarda buscando primeiro o acordo. Quando não é possível, entramos com a ação.","provider":{"@id":"https://www.grewmfadvogados.com/#escritorio"},"areaServed":{"@type":"City","name":"Belo Horizonte"},"hasOfferCatalog":{"@type":"OfferCatalog","name":"Família e Sucessões","itemListElement":[{"@type":"Offer","itemOffered":{"@type":"Service","name":"Divórcio consensual e litigioso","description":"Judicial ou em cartório, conforme o caso permitir."}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Partilha de bens","description":"Definição do que é comum, do que é particular e de como dividir."}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Inventário e partilha","description":"Extrajudicial em cartório quando há acordo; judicial quando não há."}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Pensão alimentícia","description":"Fixação, revisão e exoneração."}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Cobrança de pensão","description":"Cumprimento de sentença, incluindo os meios de cobrança previstos em lei."}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Guarda e convivência","description":"Definição, revisão e regulamentação do convívio com os filhos."}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Curatela e interdição","description":"Proteção jurídica de quem não pode praticar atos da vida civil."}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"União estável","description":"Reconhecimento, dissolução e contratos de convivência."}}]}}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Quanto tempo demora um inventário?","acceptedAnswer":{"@type":"Answer","text":"Depende do caminho. Havendo acordo entre os herdeiros e todos sendo maiores e capazes, o inventário pode ser feito em cartório e costuma levar semanas. Havendo disputa, testamento ou herdeiro menor, ele corre na Justiça e o prazo é maior. Na primeira conversa conseguimos dizer em qual dos dois cenários o seu caso está."}},{"@type":"Question","name":"Dá para se divorciar sem ir à Justiça?","acceptedAnswer":{"@type":"Answer","text":"Sim. Se o casal está de acordo e não há filhos menores ou incapazes, o divórcio pode ser feito em cartório, com assistência de advogado. É mais rápido e menos custoso do que o processo judicial."}},{"@type":"Question","name":"Existe prazo para abrir o inventário?","acceptedAnswer":{"@type":"Answer","text":"Sim. A legislação prevê a abertura em até 60 dias do falecimento, e a perda desse prazo pode gerar multa sobre o imposto estadual (ITCMD). Se o prazo já passou, ainda é possível regularizar — quanto antes, menor o impacto."}},{"@type":"Question","name":"Precisa de advogado para acordo de guarda?","acceptedAnswer":{"@type":"Answer","text":"Para que o acordo tenha força de decisão judicial, sim: ele precisa ser homologado, e isso é feito com advogado. Um acordo apenas combinado entre as partes não protege ninguém se for descumprido."}}]}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Início","item":"https://www.grewmfadvogados.com/"},{"@type":"ListItem","position":2,"name":"Áreas de atuação","item":"https://www.grewmfadvogados.com/areas/"},{"@type":"ListItem","position":3,"name":"Família e Sucessões","item":"https://www.grewmfadvogados.com/areas/familia-e-sucessoes/"}]}</script>
@@ -59,6 +66,11 @@
           <li><a class="nav__link" href="/contato/">Contato</a></li>
           <li class="nav__drawer-cta"><a class="btn btn--wa btn--block" href="https://wa.me/5531984565235?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20gostaria%20de%20falar%20com%20um%20advogado." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91a9.82 9.82 0 0 0 1.35 4.96L2 22l5.28-1.38a9.9 9.9 0 0 0 4.76 1.21h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2Zm0 18.15h-.01a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.13.82.84-3.05-.2-.31a8.19 8.19 0 0 1-1.26-4.37c0-4.54 3.7-8.23 8.24-8.23a8.23 8.23 0 0 1 8.23 8.24c0 4.54-3.7 8.23-8.23 8.23Zm4.52-6.16c-.25-.13-1.47-.72-1.69-.8-.23-.09-.39-.13-.56.12-.16.25-.64.8-.78.97-.15.16-.29.18-.53.06a6.7 6.7 0 0 1-1.99-1.23 7.48 7.48 0 0 1-1.38-1.71c-.14-.25-.01-.38.11-.5.11-.11.25-.29.37-.44.13-.15.17-.25.25-.42.09-.16.04-.31-.02-.43-.06-.13-.56-1.35-.77-1.85-.2-.48-.4-.42-.56-.42l-.47-.01c-.16 0-.43.06-.65.31-.23.25-.86.84-.86 2.05s.88 2.38 1 2.54c.13.17 1.74 2.65 4.21 3.72.59.25 1.04.4 1.4.52.59.18 1.13.16 1.55.1.47-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.11-.23-.17-.47-.29Z"/></svg>Falar no WhatsApp</a></li>
       </ul>
+      <button class="tema" type="button" id="alternar-tema"
+              aria-label="Mudar para o tema claro" aria-pressed="false">
+        <span class="tema__lua"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20.5 14.4A8.6 8.6 0 0 1 9.6 3.5a8.6 8.6 0 1 0 10.9 10.9Z"/></svg></span>
+        <span class="tema__sol"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 16.4a4.4 4.4 0 1 0 0-8.8 4.4 4.4 0 0 0 0 8.8Z"/><path d="M12 2.6v2.2M12 19.2v2.2M4.9 4.9l1.6 1.6M17.5 17.5l1.6 1.6M2.6 12h2.2M19.2 12h2.2M4.9 19.1l1.6-1.6M17.5 6.5l1.6-1.6"/></svg></span>
+      </button>
       <a class="btn btn--primary nav__cta" href="/contato/">Agendar consulta</a>
     </nav>
   </div>
@@ -275,6 +287,6 @@
     <button class="btn btn--ghost" type="button" data-consent="recusado">Recusar</button>
   </div>
 </div>
-<script src="/assets/js/site.js?v=a1e41711" defer></script>
+<script src="/assets/js/site.js?v=2aa4f6c5" defer></script>
 </body>
 </html>

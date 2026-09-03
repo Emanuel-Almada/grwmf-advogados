@@ -51,6 +51,28 @@ atalho pode apontar para a mesma página, que é o caso de "Divórcio" e "Invent
 Mantenha os rótulos curtos e de comprimento parecido — é isso que faz a régua
 compor como um bloco em vez de uma nuvem desalinhada.
 
+## Temas
+
+O site tem tema escuro (padrão) e claro, alternados pelo botão no cabeçalho. A
+escolha fica no `localStorage` e um script no `<head>` a aplica antes da primeira
+pintura, para a página não piscar no tema errado.
+
+**Os dois temas vivem no mesmo `site.css` e diferem só por tokens de cor.** O
+bloco `:root` traz o escuro; `[data-theme="light"]` redefine as cores. Estrutura,
+responsividade, tamanhos e correções são escritos uma vez e valem para os dois —
+não existe folha de estilo separada por tema, e não deve existir.
+
+Ao mexer em cor, mude o token, nunca o valor dentro da regra do componente. Se
+precisar de um valor que muda entre temas e ainda não tem token, crie um.
+
+O rodapé e a faixa de CTA são escuros nos **dois** temas. Eles redefinem os
+tokens de texto no próprio escopo (`--parchment`, `--muted`, `--brass`…), então
+as regras internas continuam escritas uma vez só.
+
+Dois valores dependem do tema e são fáceis de esquecer: `--on-brass` (texto sobre
+o botão dourado — escuro no tema escuro, branco no claro, porque o dourado
+inverte) e o `theme-color` do navegador, atualizado pelo JS na troca.
+
 ## Regra editorial — Provimento 205/2021 da OAB
 
 O site foi escrito dentro dos limites da publicidade na advocacia. Ao editar

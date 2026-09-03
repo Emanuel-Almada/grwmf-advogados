@@ -34,6 +34,39 @@
     (mq.addEventListener ? mq.addEventListener.bind(mq, "change") : mq.addListener.bind(mq))(closeMenu);
   }
 
+  /* ---------------------------------------------------- tema claro/escuro */
+  var CHAVE_TEMA = "grwmf.tema";
+  var botaoTema = document.getElementById("alternar-tema");
+  var metaCor = document.querySelector('meta[name="theme-color"]');
+
+  function aplicarTema(tema) {
+    var claro = tema === "light";
+    if (claro) document.documentElement.setAttribute("data-theme", "light");
+    else document.documentElement.removeAttribute("data-theme");
+
+    if (metaCor) metaCor.setAttribute("content", claro ? "#FBF8F3" : "#141B29");
+    if (botaoTema) {
+      botaoTema.setAttribute("aria-pressed", String(claro));
+      botaoTema.setAttribute(
+        "aria-label",
+        claro ? "Mudar para o tema escuro" : "Mudar para o tema claro"
+      );
+    }
+  }
+
+  if (botaoTema) {
+    var salvo = null;
+    try { salvo = localStorage.getItem(CHAVE_TEMA); } catch (e) {}
+    aplicarTema(salvo === "light" ? "light" : "dark");
+
+    botaoTema.addEventListener("click", function () {
+      var claroAgora = document.documentElement.getAttribute("data-theme") === "light";
+      var novo = claroAgora ? "dark" : "light";
+      aplicarTema(novo);
+      try { localStorage.setItem(CHAVE_TEMA, novo); } catch (e) {}
+    });
+  }
+
   /* ---------------------------------------------------- sombra do header */
   var header = document.querySelector(".site-header");
   if (header) {
