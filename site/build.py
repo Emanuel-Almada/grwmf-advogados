@@ -419,7 +419,7 @@ def bloco_faq(pares, titulo="Perguntas frequentes", eyebrow="Dúvidas comuns",
 
 
 def cta_band(titulo, texto, msg_wa, botao_secundario=True):
-    sec = ('<a class="btn btn--onDark" href="/contato/">Enviar mensagem</a>'
+    sec = ('<a class="btn btn--onDark" href="/contato/">Enviar formulário</a>'
            if botao_secundario else "")
     return f"""<section class="cta-band">
   <span class="ghost" aria-hidden="true">Contato</span>
@@ -831,7 +831,7 @@ def build_advogado(adv):
           <a class="btn btn--wa" href="{wa_link(adv['whatsapp'], msg)}" target="_blank" rel="noopener">
             {ICONS['whatsapp']}Falar no WhatsApp
           </a>
-          <a class="btn btn--ghost" href="/contato/">Enviar mensagem</a>
+          <a class="btn btn--ghost" href="/contato/">Enviar formulário</a>
         </div>
       </div>
     </div>
