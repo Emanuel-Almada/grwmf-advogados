@@ -633,7 +633,7 @@ def build_home():
     </div>
     <div class="grid grid--3">{artigos}
     </div>
-    <p style="margin-top:32px"><a class="link-arrow" href="/artigos/">Ver todos os artigos {ICONS['seta']}</a></p>
+    <p class="section-more"><a class="link-arrow" href="/artigos/">Ver todos os artigos {ICONS['seta']}</a></p>
   </div>
 </section>
 
@@ -1496,7 +1496,7 @@ def build_404():
     <div class="grid grid--3">
     {cards}
     </div>
-    <p style="margin-top:32px"><a class="link-arrow" href="/areas/">Ver todas as áreas {ICONS['seta']}</a></p>
+    <p class="section-more"><a class="link-arrow" href="/areas/">Ver todas as áreas {ICONS['seta']}</a></p>
   </div>
 </section>"""
 

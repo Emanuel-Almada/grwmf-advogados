@@ -272,6 +272,9 @@ hr{border:0; border-top:1px solid var(--line); margin:0}
 .cookie .btn-row{max-width:none}
 .cookie .btn-row .btn{flex:0 0 auto; min-width:0; width:auto}
 
+/* link "ver todos" no pé de uma seção */
+.section-more{margin-top:32px}
+
 .link-arrow{
   display:inline-flex; align-items:center; gap:7px;
   font-size:var(--fs-sm); font-weight:700; color:var(--brass);
@@ -1013,6 +1016,7 @@ hr{border:0; border-top:1px solid var(--line); margin:0}
   .section-head{margin-inline:auto}
   .lead, .hero__lead, .cta-band p{margin-inline:auto}
   .hero__chips-rotulo{text-align:center}
+  .section-more{text-align:center}
   .hero__trust{justify-content:center}
   .crumbs{justify-content:center}
 
