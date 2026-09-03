@@ -419,7 +419,7 @@ def bloco_faq(pares, titulo="Perguntas frequentes", eyebrow="Dúvidas comuns",
 
 
 def cta_band(titulo, texto, msg_wa, botao_secundario=True):
-    sec = ('<a class="btn btn--onDark" href="/contato/">Enviar mensagem pelo formulário</a>'
+    sec = ('<a class="btn btn--onDark" href="/contato/">Enviar mensagem</a>'
            if botao_secundario else "")
     return f"""<section class="cta-band">
   <span class="ghost" aria-hidden="true">Contato</span>
@@ -829,7 +829,7 @@ def build_advogado(adv):
 
         <div class="btn-row" style="margin-top:32px">
           <a class="btn btn--wa" href="{wa_link(adv['whatsapp'], msg)}" target="_blank" rel="noopener">
-            {ICONS['whatsapp']}Falar com {e(adv['nome'].split()[0])}
+            {ICONS['whatsapp']}Falar no WhatsApp
           </a>
           <a class="btn btn--ghost" href="/contato/">Enviar mensagem</a>
         </div>
@@ -928,7 +928,7 @@ def build_area(area):
     <p class="lead">{e(area['lead'])}</p>
     <div class="btn-row" style="margin-top:26px">
       <a class="btn btn--wa" href="{wa_link(SITE['whatsapp'], msg)}" target="_blank" rel="noopener">
-        {ICONS['whatsapp']}Falar sobre {e(area['nome'])}
+        {ICONS['whatsapp']}Falar no WhatsApp
       </a>
       <a class="btn btn--ghost" href="/contato/">Agendar consulta</a>
     </div>
@@ -1314,7 +1314,7 @@ def build_contato():
           </div>
 
           <button class="btn btn--wa btn--block" type="submit">
-            {ICONS['whatsapp']}Abrir no WhatsApp
+            {ICONS['whatsapp']}Falar no WhatsApp
           </button>
 
           <p class="form-status" role="status" aria-live="polite" hidden></p>

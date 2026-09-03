@@ -223,11 +223,11 @@ hr{border:0; border-top:1px solid var(--line); margin:0}
 /* ------------------------------------------------------------ 4. botões */
 .btn{
   display:inline-flex; align-items:center; justify-content:center; gap:9px;
-  min-height:48px; padding:12px 26px;
+  min-height:52px; padding:12px 26px;
   font-family:var(--sans); font-size:var(--fs-sm); font-weight:700;
   letter-spacing:.04em; text-transform:uppercase;
   border:1px solid transparent; border-radius:var(--r-sm);
-  cursor:pointer; text-align:center; position:relative;
+  cursor:pointer; text-align:center; position:relative; white-space:nowrap;
   transition:background-color var(--t), color var(--t), border-color var(--t),
              box-shadow var(--t), transform var(--t);
 }
@@ -256,7 +256,21 @@ hr{border:0; border-top:1px solid var(--line); margin:0}
 
 .btn--block{width:100%}
 .btn[disabled]{opacity:.55; cursor:not-allowed; box-shadow:none}
-.btn-row{display:flex; flex-wrap:wrap; gap:12px}
+/* A linha de botões não se espalha: acima de 33rem os botões ficariam
+   enormes numa faixa larga. Dentro dela, crescem em partes iguais. */
+.btn-row{display:flex; flex-wrap:wrap; gap:12px; max-width:33rem}
+.btn-row .btn{flex:1 1 15.5rem}
+
+/* Abaixo de 1100px a coluna do hero não comporta o par lado a lado: em vez
+   de quebrar com a borda irregular, cada botão ocupa a linha inteira. */
+@media (max-width:1099px){
+  .btn-row{justify-content:center}
+  .btn-row .btn{flex:1 1 100%; min-width:0; width:100%}
+}
+
+/* o aviso de cookies é compacto: mantém os botões no tamanho do rótulo */
+.cookie .btn-row{max-width:none}
+.cookie .btn-row .btn{flex:0 0 auto; min-width:0; width:auto}
 
 .link-arrow{
   display:inline-flex; align-items:center; gap:7px;
@@ -333,6 +347,10 @@ hr{border:0; border-top:1px solid var(--line); margin:0}
 .nav__cta{display:none}
 .nav__drawer-cta{display:none}
 @media (min-width:1024px){ .nav__cta{display:inline-flex} }
+@media (min-width:1024px) and (max-width:1160px){
+  .nav{gap:clamp(10px, 1.6vw, 22px)}
+  .nav__cta{padding-inline:16px}
+}
 
 .nav__toggle{
   display:inline-flex; align-items:center; justify-content:center;
@@ -448,8 +466,7 @@ hr{border:0; border-top:1px solid var(--line); margin:0}
   .hero__chips ul::-webkit-scrollbar{display:none}
   .hero__chips li{scroll-snap-align:start}
 
-  .hero__acoes{gap:10px}
-  .hero__acoes .btn{width:100%}
+  .btn-row{gap:10px}
 
   .hero__trust{gap:8px 18px; margin-top:22px; padding-top:18px; font-size:var(--fs-xs)}
   .hero__trust svg{width:15px; height:15px}
@@ -976,7 +993,6 @@ hr{border:0; border-top:1px solid var(--line); margin:0}
 @media (max-width: 360px){
   :root{--gut:16px}
   .hero h1{font-size:1.75rem}
-  .btn{padding-inline:18px; font-size:var(--fs-xs)}
   .card__body{padding:20px 20px 22px}
   .faq__item summary{font-size:var(--fs-lg)}
   .step, .service, .pillar{padding-inline:20px}
